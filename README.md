@@ -27,6 +27,8 @@ labirint_test_project/
 
 ### Полезные ссылки
 - [Генератор файла .gitignore] (https://www.toptal.com/developers/gitignore)
+- [Про configparse] (https://docs.python.org/3/library/configparser.html)
+- [Про pip freeze] (https://pip.pypa.io/en/stable/cli/pip_freeze/)
 
 ### Библиотеки
 - pip install pytest
