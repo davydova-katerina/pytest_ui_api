@@ -32,3 +32,5 @@ labirint_test_project/
 - pip install pytest
 - pip install selenium
 - pip install webdriver-manager
+- pip install allure-pytest
+- pip install requests
