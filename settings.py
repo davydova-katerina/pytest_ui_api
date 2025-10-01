@@ -28,5 +28,8 @@ class Settings:
     IMPLICIT_WAIT = 10
     EXPLICIT_WAIT = 20
 
+    # Настройки драйвера
+    DRIVER_PATH = os.getenv("DRIVER_PATH", "")
+
 
 settings = Settings()
