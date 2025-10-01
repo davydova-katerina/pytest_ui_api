@@ -4,16 +4,18 @@
 
 ### Шаги
 - Склонировать проект 'git clone https://github.com/davydova-katerina/pytest_ui_api.git'
-- Установить все зависимости
+- Установить все зависимости 'python -m pip install -r requirements.txt'
 - Запустить тесты 'pytest'
 
 ### Стек:
 - pytest
 - selenium
+- webdriver manager
 - requests
 - _sqlalchemy_
 - allure
-- config
+- configparser
+- json
 
 ## Структура проекта
 labirint_test_project/
@@ -29,10 +31,3 @@ labirint_test_project/
 - [Генератор файла .gitignore] (https://www.toptal.com/developers/gitignore)
 - [Про configparse] (https://docs.python.org/3/library/configparser.html)
 - [Про pip freeze] (https://pip.pypa.io/en/stable/cli/pip_freeze/)
-
-### Библиотеки
-- pip install pytest
-- pip install selenium
-- pip install webdriver-manager
-- pip install allure-pytest
-- pip install requests
