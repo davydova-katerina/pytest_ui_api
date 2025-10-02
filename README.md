@@ -31,3 +31,10 @@ labirint_test_project/
 - [Генератор файла .gitignore] (https://www.toptal.com/developers/gitignore)
 - [Про configparse] (https://docs.python.org/3/library/configparser.html)
 - [Про pip freeze] (https://pip.pypa.io/en/stable/cli/pip_freeze/)
+
+### Команды для запуска тестов
+
+- # Запуск UI тестов
+- pytest tests/test_ui.py -v
+- # Запуск API тестов
+- pytest tests/test_api.py -v
