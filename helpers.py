@@ -5,14 +5,17 @@ from settings import settings
 
 
 class APIHelper:
-    """Класс для работы с API"""
+    """Класс для работы с API."""
 
     def __init__(self):
         self.base_url = settings.API_BASE_URL
         self.session = requests.Session()
         self.session.headers.update({
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                          'AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/91.0.4472.124 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;'
+                      'q=0.9,image/webp,*/*;q=0.8',
             'Accept-Language': 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
             'Accept-Encoding': 'gzip, deflate, br',
             'Connection': 'keep-alive',
@@ -23,7 +26,7 @@ class APIHelper:
         self.request_delay = 2
 
     def _make_request(self, method, url, **kwargs):
-        """Вспомогательный метод для выполнения запросов с задержкой"""
+        """Выполнить запрос с задержкой."""
         current_time = time.time()
         time_since_last_request = current_time - self.last_request_time
         if time_since_last_request < self.request_delay:
@@ -42,7 +45,7 @@ class APIHelper:
 
     @allure.step("API: Поиск книг по запросу: {query}")
     def search_books(self, query):
-        """Поиск книг через API"""
+        """Поиск книг через API."""
         url = f"{self.base_url}/search/"
         params = {
             'st': query,
@@ -52,20 +55,20 @@ class APIHelper:
 
     @allure.step("API: Получить информацию о книге по ISBN: {isbn}")
     def get_book_info(self, isbn):
-        """Получить информацию о книге по ISBN"""
+        """Получить информацию о книге по ISBN."""
         url = f"{self.base_url}/books/{isbn}/"
         return self._make_request('GET', url, timeout=10)
 
     @allure.step("API: Проверить доступность сайта")
     def check_availability(self):
-        """Проверить доступность сайта"""
+        """Проверить доступность сайта."""
         return self._make_request('GET', self.base_url, timeout=10)
 
     @allure.step("API: Проверить здоровье сайта")
     def health_check(self):
-        """Проверить здоровье сайта - упрощенная версия"""
+        """Проверить здоровье сайта - упрощенная версия."""
         try:
             response = self._make_request('GET', self.base_url, timeout=5)
             return response is not None
-        except:
+        except Exception:
             return False
