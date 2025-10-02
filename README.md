@@ -12,7 +12,6 @@
 - selenium
 - webdriver manager
 - requests
-- _sqlalchemy_
 - allure
 - configparser
 - json
