@@ -1,7 +1,7 @@
 import requests
 import allure
 import time
-from pytest_ui_api.settings import settings
+from settings import settings
 
 
 class APIHelper:
@@ -10,7 +10,6 @@ class APIHelper:
     def __init__(self):
         self.base_url = settings.API_BASE_URL
         self.session = requests.Session()
-        # Устанавливаем реалистичные заголовки
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
@@ -20,13 +19,11 @@ class APIHelper:
             'Upgrade-Insecure-Requests': '1',
         })
 
-        # Добавляем задержку между запросами чтобы избежать блокировки
         self.last_request_time = 0
-        self.request_delay = 2  # секунды
+        self.request_delay = 2
 
     def _make_request(self, method, url, **kwargs):
         """Вспомогательный метод для выполнения запросов с задержкой"""
-        # Добавляем задержку между запросами
         current_time = time.time()
         time_since_last_request = current_time - self.last_request_time
         if time_since_last_request < self.request_delay:
@@ -38,7 +35,6 @@ class APIHelper:
             return response
         except requests.exceptions.RequestException as e:
             print(f"Request error: {e}")
-            # Создаем mock response с ошибкой
             mock_response = requests.Response()
             mock_response.status_code = 0
             mock_response._content = str(e).encode()
