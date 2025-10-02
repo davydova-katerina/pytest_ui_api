@@ -5,7 +5,7 @@ load_dotenv()
 
 
 class Settings:
-    """Класс для хранения настроек проекта"""
+    """Класс для хранения настроек проекта."""
 
     # URL сайта
     BASE_URL = "https://www.labirint.ru"
