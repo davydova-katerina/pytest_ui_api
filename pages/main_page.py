@@ -10,7 +10,8 @@ class MainPage(BasePage):
     SEARCH_INPUT = (By.ID, "search-field")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "button.b-header-b-search-e-btn")
     CART_BUTTON = (By.CSS_SELECTOR,
-                   "a.b-header-b-personal-e-link.top-link-main.top-link-main_cart")
+                   "a.b-header-b-personal-e-link"
+                   ".top-link-main.top-link-main_cart")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "a.js-b-autofade-wrap")
     BOOKS_MENU = (By.CSS_SELECTOR, "a[href='/books/']")
 
