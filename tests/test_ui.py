@@ -29,7 +29,6 @@ def create_chrome_driver():
     chrome_options.add_argument("--disable-extensions")
     chrome_options.add_argument("--remote-debugging-port=9222")
 
-    # Попробуем использовать webdriver-manager, а если не получится - системный драйвер
     try:
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -84,7 +83,6 @@ def driver():
 
     yield driver_instance
 
-    # Закрытие браузера
     try:
         driver_instance.quit()
     except Exception as e:
@@ -110,7 +108,6 @@ class TestLabirintUI:
             main_page.search_book(settings.TEST_BOOK_TITLE)
 
         with allure.step("Проверить результаты поиска"):
-            # Ждем загрузки результатов
             search_page.wait.until(
                 lambda d: search_page.get_search_results_count() > 0 or
                           search_page.is_no_results_message_displayed()
@@ -137,13 +134,11 @@ class TestLabirintUI:
             main_page.search_book("NonexistentBook12345XYZ")
 
         with allure.step("Проверить сообщение об отсутствии результатов"):
-            # Даем время для отображения сообщения
             search_page.wait.until(
                 lambda d: search_page.is_no_results_message_displayed() or
                           search_page.get_search_results_count() == 0
             )
 
-            # Проверяем либо сообщение об ошибке, либо отсутствие результатов
             no_results = (search_page.is_no_results_message_displayed() or
                           search_page.get_search_results_count() == 0)
             assert no_results, "Не отображается сообщение об отсутствии результатов"
@@ -166,11 +161,9 @@ class TestLabirintUI:
         with allure.step("Добавить первую книгу в корзину"):
             initial_cart_count = search_page.get_cart_items_count()
 
-            # Ждем появления кнопок добавления в корзину
             if search_page.get_search_results_count() > 0:
                 search_page.add_first_book_to_cart()
 
-                # Ждем обновления счетчика корзины
                 search_page.wait.until(
                     lambda d: search_page.get_cart_items_count() != initial_cart_count
                 )
@@ -198,7 +191,6 @@ class TestLabirintUI:
         with allure.step("Добавить книгу в корзину"):
             if search_page.get_search_results_count() > 0:
                 search_page.add_first_book_to_cart()
-                # Ждем обновления счетчика
                 search_page.wait.until(
                     lambda d: search_page.get_cart_items_count() > 0
                 )
@@ -213,7 +205,6 @@ class TestLabirintUI:
             if cart_items_before > 0:
                 cart_page.clear_cart()
 
-                # Ждем очистки корзины
                 cart_page.wait.until(
                     lambda d: cart_page.is_cart_empty() or
                               cart_page.get_cart_items_count() == 0
