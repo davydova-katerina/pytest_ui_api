@@ -9,7 +9,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
-from config.settings import settings
+from settings import settings
 from pages.main_page import MainPage
 from pages.search_page import SearchPage
 from pages.cart_page import CartPage

@@ -28,11 +28,12 @@ class Settings:
     IMPLICIT_WAIT = 10
     EXPLICIT_WAIT = 20
 
+    # Настройки драйвера
+    DRIVER_PATH = os.getenv("DRIVER_PATH", "")
+
     # Настройки API тестов
     API_RETRY_COUNT = int(os.getenv("API_RETRY_COUNT", "2"))
     API_TIMEOUT = int(os.getenv("API_TIMEOUT", "10"))
-
-    # Настройки для обработки 502 ошибок
     SKIP_502_ERRORS = os.getenv("SKIP_502_ERRORS", "True").lower() == "true"
 
 

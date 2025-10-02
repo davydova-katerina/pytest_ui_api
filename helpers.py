@@ -1,7 +1,7 @@
 import requests
 import allure
 import time
-from settings import settings
+from pytest_ui_api.settings import settings
 
 
 class APIHelper:

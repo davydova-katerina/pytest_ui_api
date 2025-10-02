@@ -1,8 +1,8 @@
 import pytest
 import allure
 import requests
-from utils.helpers import APIHelper
-from config.settings import settings
+from helpers import APIHelper
+from settings import settings
 
 
 class TestLabirintAPI:
