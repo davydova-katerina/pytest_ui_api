@@ -44,7 +44,7 @@ class SearchPage(BasePage):
             buttons = self.driver.find_elements(*self.ADD_TO_CART_BUTTON)
             if buttons:
                 buttons[0].click()
-                time.sleep(2)  # Небольшая пауза для обработки
+                time.sleep(2)
                 return True
         except Exception as e:
             print(f"Error adding to cart: {e}")
