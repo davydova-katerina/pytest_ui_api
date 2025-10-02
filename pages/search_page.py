@@ -8,16 +8,27 @@ class SearchPage(BasePage):
     """Класс для работы со страницей поиска."""
 
     # Обновленные локаторы
-    SEARCH_RESULTS = (By.CSS_SELECTOR, "div.product.need-watch, div.product-card")
-    BOOK_TITLE = (By.CSS_SELECTOR, "a.product-title-link, a.product-card__title")
-    ADD_TO_CART_BUTTON = (By.CSS_SELECTOR,
-                          "a.btn.buy-link.btn-primary, button.btn-buy")
+    SEARCH_RESULTS = (
+        By.CSS_SELECTOR,
+        "div.product.need-watch, div.product-card"
+    )
+    BOOK_TITLE = (
+        By.CSS_SELECTOR,
+        "a.product-title-link, a.product-card__title"
+    )
+    ADD_TO_CART_BUTTON = (
+        By.CSS_SELECTOR,
+        "a.btn.buy-link.btn-primary, button.btn-buy"
+    )
     CART_COUNTER = (
         By.CSS_SELECTOR,
-        "span.b-header-b-personal-e-icon-count-m-cart, span.basket-in-cart-a"
+        "span.b-header-b-personal-e-icon-count-m-cart, "
+        "span.basket-in-cart-a"
     )
-    NO_RESULTS_MESSAGE = (By.CSS_SELECTOR,
-                          "div.search-error, div.searchnoresults")
+    NO_RESULTS_MESSAGE = (
+        By.CSS_SELECTOR,
+        "div.search-error, div.searchnoresults"
+    )
     SEARCH_TITLE = (By.CSS_SELECTOR, "h1.searchtitle")
 
     @allure.step("Получить количество результатов поиска")
